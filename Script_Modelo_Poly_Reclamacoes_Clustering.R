@@ -144,23 +144,3 @@ Tabela_Clustering_Output <- group_by(Tabela_Clustering, cluster_H) %>%
     Max_Tendencia_Geral_Pontos = max(Tendencia_Geral_Pontos, na.rm = TRUE))
 
 
-
-##################CONTINUAR A PARTIR DAQUI ########################################
-
-
-
-# A seguir, vamos verificar se todas as variáveis ajudam na formação dos grupos
-
-summary(anova_child_mort <- aov(formula = child_mort ~ cluster_H,
-                                data = pais_padronizado))
-
-summary(anova_exports <- aov(formula = exports ~ cluster_H,
-                             data = pais_padronizado))
-
-summary(anova_health <- aov(formula = health ~ cluster_H,
-                            data = pais_padronizado))
-
-summary(anova_imports <- aov(formula = imports ~ cluster_H,
-                             data = pais_padronizado))
-
-
