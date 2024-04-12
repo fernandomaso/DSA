@@ -149,22 +149,5 @@ write_xlsx(Tabela_Clustering_Output, "C:\\Users\\Ferds\\Dropbox\\Pós Graduaçã
 #Extrair tabela Clustering:
 write_xlsx(Tabela_Clustering, "C:\\Users\\Ferds\\Dropbox\\Pós Graduação\\TCC\\Modelo Poly\\Modelo Polinomial\\Tabela_Clustering.xlsx")
 
-##################CONTINUAR A PARTIR DAQUI ########################################
-
-
-
-# A seguir, vamos verificar se todas as variáveis ajudam na formação dos grupos
-
-summary(anova_child_mort <- aov(formula = child_mort ~ cluster_H,
-                                data = pais_padronizado))
-
-summary(anova_exports <- aov(formula = exports ~ cluster_H,
-                             data = pais_padronizado))
-
-summary(anova_health <- aov(formula = health ~ cluster_H,
-                            data = pais_padronizado))
-
-summary(anova_imports <- aov(formula = imports ~ cluster_H,
-                             data = pais_padronizado))
 
 
