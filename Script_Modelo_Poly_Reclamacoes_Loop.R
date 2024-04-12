@@ -31,6 +31,17 @@ Parametros_Loop[
   with(Parametros_Loop, order(Janela_ID, Pais_ID, Agrupamento_ID),),
 ]
 
+#_____________________________PROVISORIO________________________________________#
+#Algoritmo do For:
+#Parametros_Loop <- Parametros_Loop[c(1:100),]
+#Agrupamentos de teste: 1874, 3285
+#_____________________________PROVISORIO________________________________________#
+
+#_____________________________PROVISORIO________________________________________#
+#i=3
+#_____________________________PROVISORIO________________________________________#
+
+
 #Loop para percorrer todos os Recortes: Todas as janelas, países e agrupamentos
 for (i in c(1:nrow(Parametros_Loop))) {
   #_______________________________RECORTAR O I-ÉSSIMO RECORTE_________________________________________#
@@ -273,4 +284,4 @@ for (i in c(1:nrow(Parametros_Loop))) {
 
 
 #Extrair tabela resumo:
-write_xlsx(Tabela_Resumo, "C:\\****\\Tabela_Resumo.xlsx")
+write_xlsx(Tabela_Resumo, "C:\\Users\\Ferds\\Dropbox\\Pós Graduação\\TCC\\Modelo Poly\\Modelo Polinomial\\Tabela_Resumo.xlsx")

@@ -58,7 +58,7 @@ summary(Tabela_Clustering$Tendencia_Geral_Pontos)
 # Matriz de dissimilaridades
 matriz_D <- Tabela_Clustering %>% 
   select(Tendencia_Geral_Pontos, Derivada_Primeira, Derivada_Segunda) %>% 
-  dist(method = "euclidean")
+  dist(method = "manhattan")
 # Method: parametrização da distância a ser utilizada
 ## "euclidean": distância euclidiana
 ## "euclidiana quadrática": elevar ao quadrado matriz_D (matriz_D^2)
@@ -93,7 +93,7 @@ fviz_nbclust(Tabela_Clustering[,7:9], kmeans, method = "wss", k.max = 10)
 
 #______________________________________________________________________________#
 #A partir do gráfico de Elbow definir na variável abaixo o número de Clusters
-Clusters <- 5
+Clusters <- 7
 #______________________________________________________________________________#
 
 #______________________________________________________________________________#
@@ -142,5 +142,29 @@ Tabela_Clustering_Output <- group_by(Tabela_Clustering, cluster_H) %>%
     SD_Tendencia_Geral_Pontos = sd(Tendencia_Geral_Pontos, na.rm = TRUE),
     Min_Tendencia_Geral_Pontos = min(Tendencia_Geral_Pontos, na.rm = TRUE),
     Max_Tendencia_Geral_Pontos = max(Tendencia_Geral_Pontos, na.rm = TRUE))
+
+#Extrair tabela Clustering:
+write_xlsx(Tabela_Clustering_Output, "C:\\Users\\Ferds\\Dropbox\\Pós Graduação\\TCC\\Modelo Poly\\Modelo Polinomial\\Tabela_Clustering_Output.xlsx")
+
+#Extrair tabela Clustering:
+write_xlsx(Tabela_Clustering, "C:\\Users\\Ferds\\Dropbox\\Pós Graduação\\TCC\\Modelo Poly\\Modelo Polinomial\\Tabela_Clustering.xlsx")
+
+##################CONTINUAR A PARTIR DAQUI ########################################
+
+
+
+# A seguir, vamos verificar se todas as variáveis ajudam na formação dos grupos
+
+summary(anova_child_mort <- aov(formula = child_mort ~ cluster_H,
+                                data = pais_padronizado))
+
+summary(anova_exports <- aov(formula = exports ~ cluster_H,
+                             data = pais_padronizado))
+
+summary(anova_health <- aov(formula = health ~ cluster_H,
+                            data = pais_padronizado))
+
+summary(anova_imports <- aov(formula = imports ~ cluster_H,
+                             data = pais_padronizado))
 
 
